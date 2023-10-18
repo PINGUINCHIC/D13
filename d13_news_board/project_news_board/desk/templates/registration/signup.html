@@ -1,0 +1,17 @@
+{% extends 'desk/base.html' %}
+
+{% block content %}
+<p><h3>Регистрация</h3></p>
+<form method="post">
+    {% csrf_token %}
+    {% for f in form %}
+        <p>
+            <label class="label" for="{{ f.id_for_label }}">{{ f.label }}:</label>
+            {{ f }}
+            <div class="errorlist">{{ f.errors }}</div>
+        </p>
+    {% endfor %}
+<input type="submit"></input>
+</form>
+
+{% endblock content %}

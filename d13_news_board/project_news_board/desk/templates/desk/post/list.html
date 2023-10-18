@@ -1,0 +1,21 @@
+{% extends "desk/base.html" %}
+{% block title %}Доска объявлений{% endblock %}
+{% block content %}
+
+    <h3><strong><u>ОБЪЯВЛЕНИЯ</u></strong></h3>
+
+        <hr>
+        {% for post in posts %}
+        <h5 class="mt-20">
+            <a class="alert alert-dark pt-2 mb-1 lh-2" href="{% url 'desk:post_detail' post.id %}">{{ post.title }}</a>
+
+        </h5>
+        <br>
+        {% if post.image %}
+
+        {% endif %}
+        <p class="date mt-5"> Опубликовано: <strong>{{ post.publish }}  {{ post.author }}</strong>. Кaтегория: <strong>{{ post.category }}</strong>.</p>
+        <hr>
+        {% endfor %}
+        {% include 'desk/pagination.html' with page=page_obj %}
+{% endblock %}
